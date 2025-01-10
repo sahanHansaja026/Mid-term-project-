@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(const TestPage());
 
-// ignore: camel_case_types
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
 
@@ -17,6 +16,46 @@ class _TestPageState extends State<TestPage> {
 
   // Variable to hold the search query
   String searchQuery = '';
+
+  // Sample book data
+  final List<Map<String, dynamic>> books = [
+    {
+      'name': 'The Catcher in the Rye',
+      'Author': 'J. D. Salinger',
+      'image': 'assets/images/book1.jpg',
+      'price': '\$15.99',
+    },
+    {
+      'name': 'One Hundred Years of Solitude',
+      'Author': 'Gabriel García Márquez',
+      'image': 'assets/images/book2.jpg',
+      'price': '\$12.99',
+    },
+    {
+      'name': 'In Search of Lost Time',
+      'Author': 'Marcel Proust',
+      'image': 'assets/images/book3.jpg',
+      'price': '\$10.99',
+    },
+    {
+      'name': 'Ulysses',
+      'Author': 'James Joyce',
+      'image': 'assets/images/book4.jpg',
+      'price': '\$10.99',
+    },
+    {
+      'name': 'Lolita',
+      'Author': 'Vladimir Nabokov',
+      'image': 'assets/images/book5.jpg',
+      'price': '\$10.99',
+    },
+    {
+      'name': 'Lolita',
+      'Author': 'Vladimir Nabokov',
+      'image': 'assets/images/book5.jpg',
+      'price': '\$10.99',
+    },
+  ];
 
   @override
   void dispose() {
@@ -40,14 +79,14 @@ class _TestPageState extends State<TestPage> {
                 radius: 28,
                 child: Icon(
                   Icons.person,
-                  color: Colors.white, // Optional: Add an icon or image
+                  color: Colors.white,
                 ),
               ),
             ),
           ],
         ),
         body: Padding(
-          padding: const EdgeInsets.only(top: 16.0, left: 16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -59,7 +98,7 @@ class _TestPageState extends State<TestPage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8.0), // Adds some spacing between text
+              const SizedBox(height: 8.0),
               Text(
                 'Best Books Now',
                 style: GoogleFonts.inriaSerif(
@@ -68,29 +107,18 @@ class _TestPageState extends State<TestPage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8.0), // Adds some spacing between text
+              const SizedBox(height: 8.0),
               Text(
                 'Find your dream book according to your preferences and join our family. What are you waiting for?',
                 style: GoogleFonts.inriaSerif(
                   fontSize: 14,
-                  color: const Color.fromARGB(255, 121, 121, 121),
+                  color: Color.fromARGB(255, 98, 97, 97),
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 16),
-              Text(
-                searchQuery,
-                style: GoogleFonts.inriaSerif(
-                  fontSize: 24,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 16),
-              // Search Bar with custom width and styled icon
               SizedBox(
-                width: MediaQuery.of(context).size.width *
-                    0.92, // 80% of the screen width
+                width: MediaQuery.of(context).size.width * 0.92,
                 child: TextField(
                   controller: _searchController,
                   decoration: InputDecoration(
@@ -98,7 +126,6 @@ class _TestPageState extends State<TestPage> {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    // Customize the suffix icon with background color and icon color
                     suffixIcon: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -108,18 +135,52 @@ class _TestPageState extends State<TestPage> {
                       child: Container(
                         padding: const EdgeInsets.all(8.0),
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(
-                              255, 0, 0, 0), // Background color for the icon
+                          color: const Color.fromARGB(255, 0, 0, 0),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         child: const Icon(
                           Icons.search,
-                          color:
-                              Color.fromARGB(255, 255, 255, 255), // Icon color
+                          color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                     ),
                   ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: books.length,
+                  itemBuilder: (context, index) {
+                    final book = books[index];
+                    return Card(
+                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: ListTile(
+                        leading: SizedBox(
+                          width: 50, // Set the width of the image
+                          height: 50, // Set the height of the image
+                          child: Image.asset(
+                            book['image'], // This is now a local asset path
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        title: Text(
+                          book['name'],
+                          style: GoogleFonts.inriaSerif(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        subtitle: Text(
+                          'Author: ${book['Author']}\nPrice: ${book['price']}',
+                          style: GoogleFonts.inriaSerif(
+                            fontSize: 14,
+                            color: Colors.black54,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
