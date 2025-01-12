@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'bookdetails.dart'; // Import the BookDetails page
 
 void main() => runApp(const TestPage());
 
@@ -24,36 +25,48 @@ class _TestPageState extends State<TestPage> {
       'Author': 'J. D. Salinger',
       'image': 'assets/images/book1.jpg',
       'price': '\$15.99',
+      'descripion':
+          "The novel follows the story of a teenager named Holden Caulfield, who has just been expelled from his prep school. The narrative unfolds over the course of three days, during which Holden experiences various forms of alienation and his mental state continues to unravel. He criticizes the adult world as 'phony' and struggles with his own transition into adulthood. The book is a profound exploration of teenage rebellion, alienation, and the loss of innocence.",
     },
     {
       'name': 'One Hundred Years of Solitude',
       'Author': 'Gabriel García Márquez',
       'image': 'assets/images/book2.jpg',
       'price': '\$12.99',
+      'descripion':
+          "This novel is a multi-generational saga that focuses on the Buendía family, who founded the fictional town of Macondo. It explores themes of love, loss, family, and the cyclical nature of history. The story is filled with magical realism, blending the supernatural with the ordinary, as it chronicles the family's experiences, including civil war, marriages, births, and deaths. The book is renowned for its narrative style and its exploration of solitude, fate, and the inevitability of repetition in history.",
     },
     {
       'name': 'In Search of Lost Time',
       'Author': 'Marcel Proust',
       'image': 'assets/images/book3.jpg',
       'price': '\$10.99',
+      'descripion':
+          "This renowned novel is a sweeping exploration of memory, love, art, and the passage of time, told through the narrator's recollections of his childhood and experiences into adulthood in the late 19th and early 20th century aristocratic France. The narrative is notable for its lengthy and intricate involuntary memory episodes, the most famous being the 'madeleine episode'. It explores the themes of time, space and memory, but also raises questions about the nature of art and literature, and the complex relationships between love, sexuality, and possession.",
     },
     {
       'name': 'Ulysses',
       'Author': 'James Joyce',
       'image': 'assets/images/book4.jpg',
       'price': '\$10.99',
+      'descripion':
+          "Set in Dublin, the novel follows a day in the life of Leopold Bloom, an advertising salesman, as he navigates the city. The narrative, heavily influenced by Homer's Odyssey, explores themes of identity, heroism, and the complexities of everyday life. It is renowned for its stream-of-consciousness style and complex structure, making it a challenging but rewarding read",
     },
     {
       'name': 'Lolita',
       'Author': 'Vladimir Nabokov',
       'image': 'assets/images/book5.jpg',
       'price': '\$10.99',
+      'descripion':
+          "The novel tells the story of Humbert Humbert, a man with a disturbing obsession for young girls, or 'nymphets' as he calls them. His obsession leads him to engage in a manipulative and destructive relationship with his 12-year-old stepdaughter, Lolita. The narrative is a controversial exploration of manipulation, obsession, and unreliable narration, as Humbert attempts to justify his actions and feelings throughout the story.",
     },
     {
-      'name': 'Lolita',
-      'Author': 'Vladimir Nabokov',
-      'image': 'assets/images/book5.jpg',
+      'name': 'The Lord of the Rings',
+      'Author': 'J. R. R. Tolkien',
+      'image': 'assets/images/book6.jpg',
       'price': '\$10.99',
+      'descripion':
+          "This epic high-fantasy novel centers around a modest hobbit who is entrusted with the task of destroying a powerful ring that could enable the dark lord to conquer the world. Accompanied by a diverse group of companions, the hobbit embarks on a perilous journey across Middle-earth, battling evil forces and facing numerous challenges. The narrative, rich in mythology and complex themes of good versus evil, friendship, and heroism, has had a profound influence on the fantasy genre.",
     },
   ];
 
@@ -178,6 +191,14 @@ class _TestPageState extends State<TestPage> {
                             color: Colors.black54,
                           ),
                         ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BookDetails(book: book),
+                            ),
+                          );
+                        },
                       ),
                     );
                   },
