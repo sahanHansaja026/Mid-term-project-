@@ -6,6 +6,8 @@
 
 ## Date of Submission: 30-01-2025
 
+## Figma Link : https://www.figma.com/design/uDa45jRVAt9ea1xoJJJJi0/Untitled
+
 ---
 
 ## Project Overview
@@ -94,7 +96,11 @@ https://www.figma.com/design/uDa45jRVAt9ea1xoJJJJi0/Untitled
 
 ### b. Final Flutter UI
 
-(Include a screenshot or GIF of the final Flutter UI here.)
+### Home Page: 
+![Light Mode](https://github.com/sahan026/images/blob/main/allbooks.png)
+
+### Book Details Page: 
+![Light Mode](https://github.com/sahan026/images/blob/main/bookdetail.png)
 
 ---
 
