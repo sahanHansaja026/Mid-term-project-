@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BookDetails extends StatelessWidget {
@@ -34,6 +35,7 @@ class BookDetails extends StatelessWidget {
             Text(
               'Author: ${book['Author']}',
               style: GoogleFonts.inriaSerif(
+                fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
@@ -42,15 +44,8 @@ class BookDetails extends StatelessWidget {
               'Price: ${book['price']}',
               style: GoogleFonts.inriaSerif(
                 fontSize: 18,
-                color: const Color.fromARGB(255, 41, 41, 41),
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            Text(
-              'Descripion: ',
-              style: GoogleFonts.inriaSerif(
-                fontSize: 18,
-                color: const Color.fromARGB(255, 0, 0, 0),
+                color: const Color.fromARGB(255, 255, 0, 0),
+                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8.0),
@@ -59,6 +54,39 @@ class BookDetails extends StatelessWidget {
               style: GoogleFonts.inriaSerif(
                 fontSize: 16,
                 color: const Color.fromARGB(255, 0, 0, 0),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                Get.back(); // Navigate back to the previous page
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurple, // Button background color
+                foregroundColor: Colors.white, // Text color
+                fixedSize: const Size(200, 50), // Width and height
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12), // Rounded corners
+                ),
+                elevation: 5, // Shadow/elevation
+              ),
+              child: const Row(
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // Centers the content
+                children: [
+                  Icon(
+                    Icons.shopping_cart_checkout_rounded, // Icon to be used
+                    color: Colors.white, // Icon color
+                  ),
+                  SizedBox(width: 8), // Space between icon and text
+                  Text(
+                    "Add Cart",
+                    style: TextStyle(
+                      fontSize: 18, // Text size
+                      fontWeight: FontWeight.bold, // Text weight
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

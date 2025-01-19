@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'test.dart';
+import 'test.dart'; // Ensure this file exists and contains the TestPage widget
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter Demo with GetX',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -35,12 +36,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      // Auto-navigate after 2 seconds
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const TestPage()),
-      );
+    Future.delayed(const Duration(seconds: 0), () {
+      // Auto-navigate to TestPage after 2 seconds using GetX
+      Get.off(() => const TestPage());
     });
   }
 
@@ -52,7 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: const Center(
-        child: Text('Loading...'), // Initial loading screen
+        child: Text(
+          'Loading...',
+          style: TextStyle(fontSize: 18),
+        ), // Initial loading screen
       ),
     );
   }
